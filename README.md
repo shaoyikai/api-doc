@@ -1,18 +1,18 @@
-Yii 2 Basic Project Template
+API 文档生成器
 ============================
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-rapidly creating small projects.
+前后台分离，非常流行的开发方法，写接口就成了麻烦的事情。本程序旨在方便的写api文档，同时提供一些有用的工具，让编写api文档成为一个非常简单的工作。
 
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
+安装说明
+-------------------
 
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-basic/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-basic/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-basic.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-basic)
+  - clone到本地
+  - composer install
+  - 创建数据库api-doc，字符集选择utf-8
+  - yii migrate ，选择yes，
 
-DIRECTORY STRUCTURE
+
+目录结构
 -------------------
 
       assets/             contains assets definition
@@ -28,74 +28,27 @@ DIRECTORY STRUCTURE
       web/                contains the entry script and Web resources
 
 
-
-REQUIREMENTS
+必要条件
 ------------
 
-The minimum requirement by this project template that your Web server supports PHP 5.4.0.
+该程序运行所需要的PHP版本为 5.4.0以上。
 
 
-INSTALLATION
-------------
-
-### Install from an Archive File
-
-Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
-
-Set cookie validation key in `config/web.php` file to some random secret string:
-
-```php
-'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-    'cookieValidationKey' => '<secret random string goes here>',
-],
-```
-
-You can then access the application through the following URL:
-
-~~~
-http://localhost/basic/web/
-~~~
-
-
-### Install via Composer
-
-If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
-
-You can then install this project template using the following command:
-
-~~~
-php composer.phar global require "fxp/composer-asset-plugin:~1.0.0"
-php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
-~~~
-
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
-
-~~~
-http://localhost/basic/web/
-~~~
-
-
-CONFIGURATION
+配置
 -------------
 
-### Database
+### 数据库
 
-Edit the file `config/db.php` with real data, for example:
+编辑文件 `config/db.php`：
 
 ```php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+    'dsn' => 'mysql:host=localhost;dbname=api-doc',
     'username' => 'root',
     'password' => '1234',
     'charset' => 'utf8',
 ];
 ```
 
-**NOTE:** Yii won't create the database for you, this has to be done manually before you can access it.
-
-Also check and edit the other files in the `config/` directory to customize your application.
+**注意：** 数据库需要手动创建
