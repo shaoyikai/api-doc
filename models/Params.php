@@ -21,7 +21,7 @@ class Params extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'params';
+        return '{{%params}}';
     }
 
     /**

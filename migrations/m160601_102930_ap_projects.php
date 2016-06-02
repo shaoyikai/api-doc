@@ -17,7 +17,7 @@ class m160601_102930_ap_projects extends Migration
 
             'pro_id' => Schema::TYPE_INTEGER . '(11) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY',
             'pro_name' => Schema::TYPE_STRING . '(50) NOT NULL COMMENT \'目项名称\'',
-            'pro_code' => Schema::TYPE_STRING . '(20) NOT NULL \'项目代码\'',
+            'pro_code' => Schema::TYPE_STRING . '(20) NOT NULL COMMENT \'项目代码\'',
 
         ],$tableOptions);
     }

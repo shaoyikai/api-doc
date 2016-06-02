@@ -20,7 +20,7 @@ class ParamsTemp extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'params_temp';
+        return '{{%params_temp}}';
     }
 
     /**
