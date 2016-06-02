@@ -23,7 +23,7 @@ class Api extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'api';
+        return '{{%api}}';
     }
 
     /**

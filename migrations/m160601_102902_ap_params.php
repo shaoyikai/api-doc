@@ -5,7 +5,7 @@ use yii\db\Migration;
 
 class m160601_102902_ap_params extends Migration
 {
-    const TB_NAME = '{{%params%}}';
+    const TB_NAME = '{{%params}}';
     public function up()
     {
         $tableOptions = null;

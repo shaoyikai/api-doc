@@ -18,7 +18,7 @@ class Projects extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'projects';
+        return '{{%projects}}';
     }
 
     /**
