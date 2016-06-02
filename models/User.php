@@ -10,6 +10,10 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     public $authKey;
     public $accessToken;
 
+    /**
+     * @var array
+     * 用户信息存储在这里
+     */
     private static $users = [
         '100' => [
             'id' => '100',
@@ -24,6 +28,13 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
             'password' => 'demo',
             'authKey' => 'test101key',
             'accessToken' => '101-token',
+        ],
+        '102' => [
+            'id' => '102',
+            'username' => 'test',
+            'password' => 'test',
+            'authKey' => 'test102key',
+            'accessToken' => '102-token',
         ],
     ];
 
