@@ -39,10 +39,8 @@ API 文档生成器
 该程序运行所需要的PHP版本为 5.4.0以上。
 
 
-配置
+配置数据库
 -------------
-
-### 数据库
 
 编辑文件 `config/db.php`：
 
@@ -62,10 +60,10 @@ return [
 待开发功能
 -------------
 
-[功能列表](TODO.md)
+[功能列表](todoTask.md)
 
 
 License
 -------------
 
-api-doc is released under the MIT License. See the bundled [LICENSE](LICENSE) for details.
+api-doc is released under the BSD License. See the bundled [LICENSE](LICENSE.md) for details.
