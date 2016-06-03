@@ -45,13 +45,13 @@ class Api extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'api_id' => 'Api ID',
-            'api_title' => '名称',
-            'api_desc' => '描述',
-            'api_url' => '接口地址',
-            'api_response' => '返回结果',
-            'parm_example' => '参数示例',
-            'api_type' => '传参方式',
+            'api_id' => Yii::t('app','api_id'),
+            'api_title' => Yii::t('app','api_title'),
+            'api_desc' => Yii::t('app','api_desc'),
+            'api_url' => Yii::t('app','api_url'),
+            'api_response' => Yii::t('app','api_response'),
+            'parm_example' => Yii::t('app','parm_example'),
+            'api_type' => Yii::t('app','api_type'),
         ];
     }
 

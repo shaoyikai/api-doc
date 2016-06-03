@@ -38,9 +38,26 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+
+        // ¶àÓïÑÔÖ§³Ö
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    'sourceLanguage' => 'en-US',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                        'app/error' => 'error.php',
+                    ],
+                ],
+            ],
+        ],
     ],
     'params' => $params,
-    'defaultRoute' => 'projects'
+    'defaultRoute' => 'site/index',
+//    'language' => 'en-US'
+    'language' => 'zh-CN'
 ];
 
 if (YII_ENV_DEV) {

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\search\ApiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '接口列表';
+$this->title = Yii::t('app','Api List');
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerCss('
@@ -20,7 +20,7 @@ $this->registerCss('
 ?>
 
 <div id="fixed">
-    <h4>接口索引</h4>
+    <h4><?=Yii::t('app','Api Index')?></h4>
     <ol>
         <?php foreach ($dataProvider->getModels() as $values) :?>
             <li><?=Html::a($values['api_title'],['api/index', 'pro_id'=>$pro_id, '#'=>'mark_'.$values['api_id']])?></li>
@@ -31,38 +31,36 @@ $this->registerCss('
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
-        <?= Html::a('创建 Api', ['create','pro_id'=>$pro_id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app','Create Api'), ['create','pro_id'=>$pro_id], ['class' => 'btn btn-success']) ?>
     </p>
-
 
     <?php foreach ($dataProvider->getModels() as $datas) :?>
         <div class="list">
-            <p>
+            <div>
                 <a name="mark_<?=$datas['api_id']?>"></a>
                 <h4 style="color: orangered;"><?=$datas['api_title']?></h4>
-            </p>
+            </div>
 
-            <p>
-                <label>接口地址</label>
+            <div>
+                <label><?=Yii::t('app','Api Url')?></label>
                 [ <?=$datas['api_url']?> ]
-            </p>
+            </div>
 
-            <p>
-                <label>调用方法</label>
+            <div>
+                <label><?=Yii::t('app','Api Usage')?></label>
                 [ <?=\app\models\Api::$type_arr[$datas['api_type']]?> ]
-            </p>
+            </div>
 
-            <p>
+            <div>
             <?php if(!empty($datas['params'])):?>
                 <table class="table table-bordered">
 
                     <tr>
-                        <th>参数</th>
-                        <th>类型</th>
-                        <th>是否可选</th>
-                        <th>说明</th>
+                        <th><?=Yii::t('app','Params')?></th>
+                        <th><?=Yii::t('app','Type')?></th>
+                        <th><?=Yii::t('app','Optional')?></th>
+                        <th><?=Yii::t('app','Description')?></th>
                     </tr>
 
                     <?php foreach ($datas['params'] as $par) :?>
@@ -76,17 +74,17 @@ $this->registerCss('
 
                 </table>
             <?php endif;?>
-            </p>
+            </div>
 
-            <p>
-                <label>返回结果</label>
+            <div>
+                <label><?=Yii::t('app','Return Result')?></label>
                 <?=$datas['api_response']?>
-            </p>
+            </div>
 
-            <p>
-                <?=Html::a('编辑',['api/update','id'=>$datas['api_id']])?> |
-                <?=Html::a('查看',['api/view','id'=>$datas['api_id']])?>
-            </p>
+            <div>
+                <?=Html::a(Yii::t('app','Update'),['api/update','id'=>$datas['api_id']])?> |
+                <?=Html::a(Yii::t('app','View'),['api/view','id'=>$datas['api_id']])?>
+            </div>
         </div>
         <p class="seperator"></p>
     <?php endforeach; ?>

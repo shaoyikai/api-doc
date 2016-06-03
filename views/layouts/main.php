@@ -24,7 +24,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => '四海道达',
+        'brandLabel' => Yii::t('app','API Doc Builder'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse',
@@ -33,14 +33,15 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => '项目', 'url' => ['/projects/index']],
-            Yii::$app->user->isGuest ?
-                ['label' => 'Login', 'url' => ['/site/login']] :
-                [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post']
-                ],
+            ['label' => Yii::t('app', 'About Us'), 'url' => ['/site/about']],
+            ['label' => Yii::t('app','Project'), 'url' => ['/projects/index']],
+
+            Yii::$app->user->isGuest ? ['label' => Yii::t('app','Login'), 'url' => ['/site/login']] : [
+                'label' => Yii::t('app','Logout') . ' (' . Yii::$app->user->identity->username . ')',
+                'url' => ['/site/logout'],
+                'linkOptions' => ['data-method' => 'post']
+            ],
+
         ],
     ]);
     NavBar::end();
@@ -56,7 +57,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; 四海道达网络科技有限公司 <?= date('Y') ?></p>
+        <p class="pull-left">&copy; shaoyikai@qq.com <?= date('Y') ?></p>
 
         <p class="pull-right"><?php //echo Yii::powered() ?></p>
     </div>
