@@ -34,11 +34,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => Yii::t('app', 'About Us'), 'url' => ['/site/about']],
-
-            Yii::$app->user->isGuest ? '' : [
-                'label' => Yii::t('app','Project'),
-                'url' => ['/projects/index']
-            ],
+            ['label' => Yii::t('app','Project'), 'url' => ['/projects/index']],
 
             Yii::$app->user->isGuest ? ['label' => Yii::t('app','Login'), 'url' => ['/site/login']] : [
                 'label' => Yii::t('app','Logout') . ' (' . Yii::$app->user->identity->username . ')',

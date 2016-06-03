@@ -20,7 +20,7 @@ class m160601_102902_ap_params extends Migration
             'parm_name' => Schema::TYPE_STRING . '(50) NOT NULL',
             'parm_type' => Schema::TYPE_STRING . '(255) NOT NULL',
             'parm_must' => Schema::TYPE_SMALLINT . '(2) NOT NULL',
-            'parm_desc' => Schema::TYPE_STRING . '(255) NOT NULL',
+            'parm_desc' => Schema::TYPE_STRING . '(255) DEFAULT NULL',
 
         ],$tableOptions);
     }

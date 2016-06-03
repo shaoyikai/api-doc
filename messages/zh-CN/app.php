@@ -46,4 +46,33 @@ return [
     'pro_name' => '目项名称',
     'pro_code' => '项目代码',
 
+    // projects
+    'Projects' => '项目',
+    'Create Projects' => '创建项目',
+    'Update Projects: ' => '更新项目：',
+    'Api List' => '接口列表',
+
+    // _form | _search
+    'Create' => '创建',
+    'Update' => '更新',
+    'Delete' => '删除',
+    'View' => '查看',
+    'Search' => '搜索',
+    'Reset' => '重置',
+
+    // view
+    'Are you sure you want to delete this item?' => '您确定要删除吗？',
+
+    // API
+    'Api Index' => '接口索引',
+    'Create Api' => '创建接口',
+    'Api Url' => '接口地址',
+    'Api Usage' => '使用方法',
+    'Params' => '参数',
+    'Type' => '类型',
+    'Optional' => '是否可选',
+    'Description' => '说明',
+    'Return Result' => '返回结果',
+
+
 ];
