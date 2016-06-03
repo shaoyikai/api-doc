@@ -20,5 +20,30 @@ return [
     // site/index
     'Congratulations!' => '恭喜您！',
     'You have successfully created your API Doc Builder application.' => '您已经成功搭建好了API Doc生成器。',
-    'Get started to create a project!' => '开始创建项目'
+    'Get started to create a project!' => '开始创建项目',
+
+    // api model
+    'api_id' => 'Api ID',
+    'api_title' => '名称',
+    'api_desc' => '描述',
+    'api_url' => '接口地址',
+    'api_response' => '返回结果',
+    'parm_example' => '参数示例',
+    'api_type' => '传参方式',
+
+    // params model
+    'parm_id' => 'Parm ID',
+    'parm_name' => '参数名',
+    'parm_type' => '类型',
+    'parm_must' => '是否必须',
+    'parm_desc' => '描述',
+
+    // params_temp model
+    'parm_temp_id' => 'Parm Temp ID',
+
+    // projects
+    'pro_id' => '目项id',
+    'pro_name' => '目项名称',
+    'pro_code' => '项目代码',
+
 ];

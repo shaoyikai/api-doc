@@ -39,9 +39,9 @@ class Projects extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'pro_id' => '目项id',
-            'pro_name' => '目项名称',
-            'pro_code' => '项目代码',
+            'pro_id' => Yii::t('app', 'pro_id'),
+            'pro_name' => Yii::t('app', 'pro_name'),
+            'pro_code' => Yii::t('app', 'pro_code'),
         ];
     }
 }

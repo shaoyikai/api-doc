@@ -42,11 +42,12 @@ class ParamsTemp extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'parm_temp_id' => 'Parm Temp ID',
-            'parm_name' => 'Parm Name',
-            'parm_type' => 'Parm Type',
-            'parm_must' => 'Parm Must',
-            'parm_desc' => 'Parm Desc',
+            'parm_temp_id' => Yii::t('app', 'parm_temp_id'),
+            'api_id' => Yii::t('app', 'api_id'),
+            'parm_name' => Yii::t('app', 'parm_name'),
+            'parm_type' => Yii::t('app', 'parm_type'),
+            'parm_must' => Yii::t('app', 'parm_must'),
+            'parm_desc' => Yii::t('app', 'parm_desc'),
         ];
     }
 }

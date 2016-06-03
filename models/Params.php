@@ -43,12 +43,12 @@ class Params extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'parm_id' => 'Parm ID',
-            'api_id' => 'Api ID',
-            'parm_name' => '参数名',
-            'parm_type' => '类型',
-            'parm_must' => '是否必须',
-            'parm_desc' => '描述',
+            'parm_id' => Yii::t('app', 'parm_id'),
+            'api_id' => Yii::t('app', 'api_id'),
+            'parm_name' => Yii::t('app', 'parm_name'),
+            'parm_type' => Yii::t('app', 'parm_type'),
+            'parm_must' => Yii::t('app', 'parm_must'),
+            'parm_desc' => Yii::t('app', 'parm_desc'),
         ];
     }
 
