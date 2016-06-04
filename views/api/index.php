@@ -91,7 +91,7 @@ $this->registerCss('
     <div class="col-md-3" role="complementary">
         <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" id="affix-top" onclick="affixTop(this)">
             <h3><?=Yii::t('app','Api Index')?></h3>
-            <ul class="nav ">
+            <ul class="nav">
                 <li class="active"><a href="#preview">用户</a>
                     <ul class="nav">
                         <?php foreach ($dataProvider->getModels() as $values) :?>
@@ -100,7 +100,6 @@ $this->registerCss('
 
                     </ul>
                 </li>
-
 
                 <li class=""><a href="#preview ">商品</a>
                     <ul class="nav">
