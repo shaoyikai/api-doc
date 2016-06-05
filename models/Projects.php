@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "projects".
@@ -43,5 +44,28 @@ class Projects extends \yii\db\ActiveRecord
             'pro_name' => Yii::t('app', 'pro_name'),
             'pro_code' => Yii::t('app', 'pro_code'),
         ];
+    }
+
+    /**
+     * @return array
+     * 获取项目列表
+     */
+    public static function getDropList()
+    {
+        $dropList = [];
+        $data = Yii::$app->getCache()->get('dropList');
+
+        if($data == false){
+            $model = Projects::find()->asArray()->all();
+            $arr = ArrayHelper::map($model, 'pro_name', 'pro_id');
+            foreach ($arr as $name => $pro_id) {
+                $dropList[] = ['label'=>$name, 'url'=> ['api/index','pro_id'=>$pro_id]];
+            }
+
+            // 缓存时间为1小时
+            Yii::$app->getCache()->set('dropList', $dropList, Yii::$app->params['cacheTime']);
+        }
+
+        return $data;
     }
 }

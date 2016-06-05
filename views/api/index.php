@@ -15,6 +15,10 @@ $this->registerCss('
     div.list{width:600px;margin-bottom:3em;}
     div.list .mark_top{display:inline-block;height:20px;}
     .seperator{height:4px;background:#4cae4c;border-radius:4px;}
+    #affix-top{
+        border-left:1px solid #ddd;
+        padding-bottom:60px;
+    }
 ');
 
 

@@ -5,8 +5,9 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-
+use app\models\Projects;
 AppAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -33,8 +34,14 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right','id' => 'top'],
         'items' => [
+            ['label' => Yii::t('app', 'GitHub'), 'url' => 'http://www.github.com/shaoyikai/api-doc'],
             ['label' => Yii::t('app', 'About Us'), 'url' => ['/site/about']],
             ['label' => Yii::t('app','Project'), 'url' => ['/projects/index']],
+
+            [
+                'label' => Yii::t('app', 'API'),
+                'items' => Projects::getDropList(),
+            ],
 
             Yii::$app->user->isGuest ? ['label' => Yii::t('app','Login'), 'url' => ['/site/login']] : [
                 'label' => Yii::t('app','Logout') . ' (' . Yii::$app->user->identity->username . ')',

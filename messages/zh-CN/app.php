@@ -7,6 +7,7 @@ return [
     'API Doc Builder' => 'API Doc 生成器',
     'Login' => '登录',
     'Logout' => '退出',
+    'API' => '接口',
 
     // site/login
     'Please fill out the following fields to login:'=>'请填写以下表单以登录系统：',
