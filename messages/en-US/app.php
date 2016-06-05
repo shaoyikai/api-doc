@@ -19,5 +19,4 @@ return [
     // site/index
     'Congratulations!' => 'Congratulations!',
     'You have successfully created your API Doc Builder application.' => 'You have successfully created your API Doc Builder application.',
-    'Get started to create a project!' => 'Get started to create a project!'
 ];
