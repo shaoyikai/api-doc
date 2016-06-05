@@ -19,6 +19,8 @@ $this->registerCss('
         border-left:1px solid #ddd;
         padding-bottom:60px;
     }
+    #affix-top .nav{margin-bottom:60px;}
+    #scrollTop{display:none;}
 ');
 
 
@@ -95,29 +97,17 @@ $this->registerCss('
     <div class="col-md-3" role="complementary">
         <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" id="affix-top" onclick="affixTop(this)">
             <h3><?=Yii::t('app','Api Index')?></h3>
+
             <ul class="nav">
-                <li class="active"><a href="#preview">用户</a>
-                    <ul class="nav">
-                        <?php foreach ($dataProvider->getModels() as $values) :?>
-                            <li><?=Html::a($values['api_title'],"#mark_".$values['api_id'])?></li>
-                        <?php endforeach;?>
-
-                    </ul>
-                </li>
-
-                <li class=""><a href="#preview ">商品</a>
-                    <ul class="nav">
-                        <li><a href="#mark_1">登录</a></li>
-                        <li><a href="#mark_2">注册</a></li>
-
-                    </ul>
-                </li>
-
+                <?php foreach ($dataProvider->getModels() as $values) :?>
+                    <li class="nav_list" onclick="setActive(this)"><?=Html::a($values['api_title'],"#mark_".$values['api_id'])?></li>
+                <?php endforeach;?>
             </ul>
 
-            <a class="back-to-top" href="#top">
+
+            <a href="#top" id="scrollTop">
                 <button type="button" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon glyphicon-triangle-top" aria-hidden="true"></span>TOP
+                    <span class="glyphicon glyphicon glyphicon-triangle-top" aria-hidden="true"></span> TOP
                 </button>
             </a>
 
@@ -138,10 +128,40 @@ $this->registerCss('
     window.onscroll = function () {
         var t = document.documentElement.scrollTop || document.body.scrollTop;
         var nav = document.getElementById("affix-top");
+        var scrollTop = document.getElementById("scrollTop");
         if (t < 100) {
             nav.style.position = "";
-        }else{
+            scrollTop.style.display = "none";
+        } else {
             affixTop(nav)
+            scrollTop.style.display = "block";
+        }
+    };
+
+    function setActive(self){
+        //取消li的active
+        var lis = document.getElementsByClassName('nav_list');
+        for(var i=0;i<lis.length;i++) {
+            if(hasClass(lis[i],'active')){
+                removeClass(lis[i],'active');
+            }
+        }
+        //当前li增加active
+        addClass(self,'active');
+    }
+
+    function hasClass(obj, cls) {
+        return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+    }
+
+    function addClass(obj, cls) {
+        if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+    }
+
+    function removeClass(obj, cls) {
+        if (hasClass(obj, cls)) {
+            var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+            obj.className = obj.className.replace(reg, ' ');
         }
     }
 

@@ -21,7 +21,6 @@ return [
     // site/index
     'Congratulations!' => '恭喜您！',
     'You have successfully created your API Doc Builder application.' => '您已经成功搭建好了API Doc生成器。',
-    'Get started to create a project!' => '开始创建项目',
 
     // api model
     'api_id' => 'Api ID',
