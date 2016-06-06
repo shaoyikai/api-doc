@@ -8,6 +8,9 @@ use app\assets\AppAsset;
 use app\models\Projects;
 AppAsset::register($this);
 
+
+$dropList = Projects::getDropList();
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -38,10 +41,11 @@ AppAsset::register($this);
             ['label' => Yii::t('app', 'About Us'), 'url' => ['/site/about']],
             ['label' => Yii::t('app','Project'), 'url' => ['/projects/index']],
 
+            count($dropList) ?
             [
                 'label' => Yii::t('app', 'API'),
-                'items' => Projects::getDropList(),
-            ],
+                'items' => $dropList,
+            ] : '',
 
             Yii::$app->user->isGuest ? ['label' => Yii::t('app','Login'), 'url' => ['/site/login']] : [
                 'label' => Yii::t('app','Logout') . ' (' . Yii::$app->user->identity->username . ')',
