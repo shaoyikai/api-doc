@@ -27,9 +27,9 @@ API 文档生成器
 -------------------
 
   - clone到本地，配置虚拟主机
+  - composer global require "fxp/composer-asset-plugin:~1.1.1"
   - 使用命令行，cd到项目根目录，执行 `composer install`
-  - 创建数据库api-doc，字符集选择utf-8
-  - 配置数据库`config/db.php`
+  - 创建数据库api-doc，字符集选择utf-8，配置数据库`config/db.php`。
   - 使用命令行，在根目录执行`php yii migrate` ，选择yes，选择all。（请自行将php添加到系统环境变量）
 
 
