@@ -42,7 +42,11 @@ $this->registerCss('
             <div class="list">
                 <div>
                     <a class="mark_top" name="mark_<?=$datas['api_id']?>"></a>
-                    <h4 style="color: orangered;"><?=$datas['api_title']?></h4>
+                    <p>
+                        <b style="color: orangered;font-size: 16px;"><?=$datas['api_title']?></b>
+                        [<?=Html::a(Yii::t('app','Update'),['api/update','id'=>$datas['api_id']])?>]
+                    </p>
+
                 </div>
 
                 <div>
@@ -84,10 +88,6 @@ $this->registerCss('
                     <?=$datas['api_response']?>
                 </div>
 
-                <div>
-                    <?=Html::a(Yii::t('app','Update'),['api/update','id'=>$datas['api_id']])?> |
-                    <?=Html::a(Yii::t('app','View'),['api/view','id'=>$datas['api_id']])?>
-                </div>
             </div>
             <p class="seperator"></p>
         <?php endforeach; ?>
