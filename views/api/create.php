@@ -7,10 +7,8 @@ $this->title = '创建 Api';
 $this->params['breadcrumbs'][] = ['label' => 'Apis', 'url' => ['index', 'pro_id' => $pro_id]];
 $this->params['breadcrumbs'][] = $this->title;
 
-$this->registerJsFile('react/react.js');
-$this->registerJsFile('react/react-dom.js');
-//$this->registerJsFile('react/browser.min.js');
 ?>
+
 <div class="api-create">
 
     <h1><?= Html::encode($this->title) ?></h1>

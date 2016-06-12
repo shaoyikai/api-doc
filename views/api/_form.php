@@ -7,6 +7,7 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Api */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<script type="text/babel" src="react-jsx/params.js"></script>
 
 <div class="api-form">
 
@@ -21,6 +22,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'api_desc')->textInput(['maxlength' => true,'style' => 'width:300px;']) ?>
 
     <?= $form->field($model, 'api_url')->textInput(['maxlength' => true,'style' => 'width:300px;']) ?>
+
+    <div id="params-box"></div>
 
     <table class="table table-bordered">
         <tr>
