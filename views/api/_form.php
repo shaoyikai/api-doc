@@ -7,6 +7,7 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Api */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<script type="text/babel" src="react-jsx/params.js"></script>
 
 <div class="api-form">
 
@@ -21,6 +22,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'api_desc')->textInput(['maxlength' => true,'style' => 'width:300px;']) ?>
 
     <?= $form->field($model, 'api_url')->textInput(['maxlength' => true,'style' => 'width:300px;']) ?>
+
+    <div id="params-box"></div>
 
     <table class="table table-bordered">
         <tr>
@@ -38,8 +41,13 @@ use yii\widgets\ActiveForm;
                     <td><?=$par['parm_type']?></td>
                     <td><?=$par['parm_must']?></td>
                     <td><?=$par['parm_desc']?></td>
-                    <td><a href="javascript:void(0)" onclick="removeParams(<?=$par['parm_temp_id']?>)" class="btn btn-warning">-</a> </td>
-
+                    <td>
+                        <?php if($model->isNewRecord):?>
+                            <a href="javascript:void(0)" onclick="removeParams(<?=$par['parm_temp_id']?>)" class="btn btn-warning">-</a>
+                        <?php else:?>
+                            <a href="javascript:void(0)" onclick="removeParamsOne(<?=$par['parm_id']?>)" class="btn btn-warning">-</a>
+                        <?php endif;?>
+                    </td>
                 </tr>
             <?php endforeach ?>
         <?php endif;?>
@@ -60,7 +68,13 @@ use yii\widgets\ActiveForm;
             </td>
             <td><input type="text" id="par_desc"></td>
 
-            <td><a href="javascript:void(0)" onclick="addParams()" class="btn btn-success">+</a> </td>
+            <td>
+                <?php if($model->isNewRecord):?>
+                    <a href="javascript:void(0)" onclick="addParams()" class="btn btn-success">+</a>
+                <?php else:?>
+                    <a href="javascript:void(0)" onclick="addParamsOne()" class="btn btn-success">+</a>
+                <?php endif;?>
+            </td>
 
         </tr>
     </table>
@@ -87,6 +101,7 @@ use yii\widgets\ActiveForm;
 
 </div>
 <script>
+    //insert
     function addParams()
     {
         var par_name = document.getElementById('par_name').value;
@@ -119,6 +134,53 @@ use yii\widgets\ActiveForm;
         $.post(
             '<?=\yii\helpers\Url::to(["params/remove"])?>',
             {id:parm_temp_id},
+            function(msg){
+                if(msg > 0){
+                    location.reload();
+                }else{
+                    console.log(msg);
+                    alert('error');
+                }
+            }
+        );
+    }
+</script>
+
+<script>
+    //update
+    function addParamsOne()
+    {
+        var api_id = <?=$model->api_id?>;
+        var par_name = document.getElementById('par_name').value;
+        var par_type = document.getElementById('par_type').value;
+        var par_must = document.getElementById('par_must').value;
+        var par_desc = document.getElementById('par_desc').value;
+
+        if(!par_name){
+            alert('参数名必填');
+            return false;
+        }
+
+        $.post(
+            '<?=\yii\helpers\Url::to(["params/add-one"])?>',
+            {api_id:api_id, parm_name:par_name, parm_type:par_type, parm_must:par_must, parm_desc:par_desc},
+            function(msg){
+
+                if(msg == 1){
+                    location.reload();
+                }else{
+                    console.log(msg);
+                    alert('error');
+                }
+            }
+        );
+    }
+
+    function removeParamsOne(parm_id)
+    {
+        $.post(
+            '<?=\yii\helpers\Url::to(["params/remove-one"])?>',
+            {id:parm_id},
             function(msg){
                 if(msg > 0){
                     location.reload();
