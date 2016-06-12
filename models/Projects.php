@@ -64,6 +64,7 @@ class Projects extends \yii\db\ActiveRecord
 
             // 缓存时间为1小时
             Yii::$app->getCache()->set('dropList', $dropList, Yii::$app->params['cacheTime']);
+            $data = $dropList;
         }
 
         return $data;

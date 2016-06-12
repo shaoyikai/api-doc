@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Api */
 
 $this->title = $model->api_id;
-$this->params['breadcrumbs'][] = ['label' => 'Apis', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Apis', 'url' => ['index', 'pro_id' => $model->pro_id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="api-view">

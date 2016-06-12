@@ -75,7 +75,7 @@ class ApiController extends Controller
         $model = new Api();
 
         if ($model->load(Yii::$app->request->post()) && $model->saveData()) {
-            return $this->redirect(['view', 'id' => $model->api_id]);
+            return $this->redirect(['index', 'pro_id' => $pro_id,'#'=>'mark_'.$model->api_id]);
         } else {
 
             $params = ParamsTemp::find()->asArray()->all();
@@ -98,7 +98,7 @@ class ApiController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->api_id]);
+            return $this->redirect(['index', 'pro_id' => $model->pro_id,'#'=>'mark_'.$model->api_id]);
         } else {
             $params = Params::find()->where(['api_id'=>$id])->asArray()->all();
 

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $this->title = 'Update Api: ' . ' ' . $model->api_id;
-$this->params['breadcrumbs'][] = ['label' => 'Apis', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Apis', 'url' => ['index', 'pro_id' => $model->pro_id]];
 $this->params['breadcrumbs'][] = ['label' => $model->api_id, 'url' => ['view', 'id' => $model->api_id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
