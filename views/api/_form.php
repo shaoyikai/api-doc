@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'api_url')->textInput(['maxlength' => true,'style' => 'width:300px;']) ?>
 
     <div id="params-box"></div>
-
+    <!--
     <table class="table table-bordered">
         <tr>
             <th>参数</th>
@@ -78,7 +78,7 @@ use yii\widgets\ActiveForm;
 
         </tr>
     </table>
-
+    -->
     <label>返回结果</label>
     <?=\cliff363825\kindeditor\KindEditorWidget::widget([
         'model' => $model,

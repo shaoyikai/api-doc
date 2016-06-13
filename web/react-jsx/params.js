@@ -21,11 +21,14 @@ var ParamsTr = React.createClass({
     render: function() {
         return (
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>45ee4</td>
+                <td>0</td>
+                <td>0</td>
+                <td>4545</td>
+                <td>
+                    <a href="javascript:void(0)" onclick="removeParams(5)" className="btn btn-warning">-</a>
+
+                </td>
             </tr>
         );
     }
@@ -33,18 +36,16 @@ var ParamsTr = React.createClass({
 
 var ParamsTable = React.createClass({
     render: function() {
-        return (
-            <table class="table table-bordered">
+        return React.createElement('table',{className:"table table-bordered"},
+            <tbody>
                 <ParamsThead />
                 <ParamsTr />
-            </table>
+            </tbody>
         );
     }
 });
 
-ReactDOM.render(
-    <ParamsTable />,
-    document.getElementById('params-box')
-);
+var box = document.getElementById('params-box');
+ReactDOM.render(<ParamsTable />,box);
 
 
