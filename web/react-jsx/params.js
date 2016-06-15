@@ -66,6 +66,24 @@ var ParamsTr = React.createClass({
 
 </tr>
 */
+var Input = React.createClass({
+    render: function() {
+        return React.createElement('input',{className:"",type:"text",id:"par_name"});
+    }
+});
+var Select = React.createClass({
+    render: function() {
+        return React.createElement(
+            'select',
+            {className:"",type:"text",id:"par_name"}
+        );
+    }
+});
+var Link = React.createClass({
+    render: function() {
+        return React.createElement('a',{className:"btn btn-success"});
+    }
+});
 var ParamsTrNew = React.createClass({
     render: function() {
         return (
@@ -85,6 +103,7 @@ var ParamsTable = React.createClass({
             <tbody>
                 <ParamsThead />
                 <ParamsTr />
+                <ParamsTrNew />
             </tbody>
         );
     }
