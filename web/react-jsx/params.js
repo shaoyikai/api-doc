@@ -3,6 +3,70 @@
  * react jsx file
  */
 
+
+/*
+<tr>
+    <td><input type="text" id="par_name"></td>
+    <td>
+        <select id="par_type">
+            <option value="0" selected>string</option>
+            <option value="1">int</option>
+        </select>
+    </td>
+    <td>
+        <select id="par_must">
+            <option value="0" selected>否</option>
+            <option value="1">是</option>
+        </select>
+    </td>
+    <td><input type="text" id="par_desc"></td>
+
+    <td>
+        <?php if($model->isNewRecord):?>
+        <a href="javascript:void(0)" onclick="addParams()" class="btn btn-success">+</a>
+        <?php else:?>
+        <a href="javascript:void(0)" onclick="addParamsOne()" class="btn btn-success">+</a>
+        <?php endif;?>
+    </td>
+
+</tr>
+*/
+var Input = React.createClass({
+    render: function() {
+        return (
+            <input type="text" id="par_name" />
+        );
+    }
+});
+var Select1 = React.createClass({
+    render: function() {
+        return (
+            <select id="par_type">
+                <option value="0" selected>string</option>
+                <option value="1">int</option>
+            </select>
+        );
+    }
+});
+
+var Select2 = React.createClass({
+    render: function() {
+        return (
+            <select id="par_must">
+                <option value="0" selected>否</option>
+                <option value="1">是</option>
+            </select>
+        );
+    }
+});
+var Link = React.createClass({
+    render: function() {
+        return (
+            <a href="javascript:void(0)" onclick="addParamsOne()" className="btn btn-success">+</a>
+        );
+    }
+});
+
 var ParamsThead = React.createClass({
     render: function() {
         return (
@@ -38,59 +102,13 @@ var ParamsTr = React.createClass({
     }
 });
 
-
-/*
-<tr>
-    <td><input type="text" id="par_name"></td>
-    <td>
-        <select id="par_type">
-            <option value="0" selected>string</option>
-            <option value="1">int</option>
-        </select>
-    </td>
-    <td>
-        <select id="par_must">
-            <option value="0" selected>否</option>
-            <option value="1">是</option>
-        </select>
-    </td>
-    <td><input type="text" id="par_desc"></td>
-
-    <td>
-        <?php if($model->isNewRecord):?>
-        <a href="javascript:void(0)" onclick="addParams()" class="btn btn-success">+</a>
-        <?php else:?>
-        <a href="javascript:void(0)" onclick="addParamsOne()" class="btn btn-success">+</a>
-        <?php endif;?>
-    </td>
-
-</tr>
-*/
-var Input = React.createClass({
-    render: function() {
-        return React.createElement('input',{className:"",type:"text",id:"par_name"});
-    }
-});
-var Select = React.createClass({
-    render: function() {
-        return React.createElement(
-            'select',
-            {className:"",type:"text",id:"par_name"}
-        );
-    }
-});
-var Link = React.createClass({
-    render: function() {
-        return React.createElement('a',{className:"btn btn-success"});
-    }
-});
 var ParamsTrNew = React.createClass({
     render: function() {
         return (
             <tr>
                 <td><Input /></td>
-                <td><Select /></td>
-                <td><Select /></td>
+                <td><Select1 /></td>
+                <td><Select2 /></td>
                 <td><Input /></td>
                 <td><Link /></td>
             </tr>

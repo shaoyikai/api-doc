@@ -88,7 +88,7 @@ use yii\widgets\ActiveForm;
             'width' => '680px',
             'height' => '350px',
             'themeType' => 'default', // optional: default, simple, qq
-            'langType' => 'zh_CN', // optional: ar, en, ko, zh_CN, zh_TW
+            'langType' => 'zh-CN',
             'items' => ['source', '|', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline', 'strikethrough', 'removeformat', '|', 'code']
         ],
     ])?>
