@@ -33,8 +33,9 @@
 */
 var Input = React.createClass({
     render: function() {
+
         return (
-            <input type="text" id="par_name" />
+            <input type={this.props.type} id={this.props.id} placeholder={this.props.desc}/>
         );
     }
 });
@@ -67,35 +68,18 @@ var Link = React.createClass({
     }
 });
 
-var ParamsThead = React.createClass({
-    render: function() {
-        return (
-            <tr>
-                <th>参数</th>
-                <th>类型</th>
-                <th>是否可选</th>
-                <th>说明</th>
-                <th>操作</th>
-            </tr>
-        );
-    }
-});
+//-------------------------------------------
 
 var ParamsTr = React.createClass({
     render: function() {
-        var parm_name = 'name';
-        var parm_type = 'type';
-        var parm_must = '1';
-        var parm_desc = 'description';
         return (
             <tr>
-                <td>{parm_name}</td>
-                <td>{parm_type}</td>
-                <td>{parm_must}</td>
-                <td>{parm_desc}</td>
+                <td>{this.props.parm_name}</td>
+                <td>{this.props.parm_type}</td>
+                <td>{this.props.parm_must}</td>
+                <td>{this.props.parm_desc}</td>
                 <td>
-                    <a href="javascript:void(0)" onclick="removeParams(5)" className="btn btn-warning">-</a>
-
+                    <a href="javascript:void(0)" onClick={this.removeParams} className="btn btn-warning">-</a>
                 </td>
             </tr>
         );
@@ -106,10 +90,10 @@ var ParamsTrNew = React.createClass({
     render: function() {
         return (
             <tr>
-                <td><Input /></td>
+                <td><Input type="text" id="par_id" desc="请输入名称"/></td>
                 <td><Select1 /></td>
                 <td><Select2 /></td>
-                <td><Input /></td>
+                <td><Input type="text" id="" desc="请输入描述"/></td>
                 <td><Link /></td>
             </tr>
         );
@@ -119,8 +103,14 @@ var ParamsTable = React.createClass({
     render: function() {
         return React.createElement('table',{className:"table table-bordered"},
             <tbody>
-                <ParamsThead />
-                <ParamsTr />
+                <tr>
+                    <th>参数</th>
+                    <th>类型</th>
+                    <th>是否可选</th>
+                    <th>说明</th>
+                    <th>操作</th>
+                </tr>
+                <ParamsTr parm_name="nameee" parm_type="ddfd" parm_must="1" parm_desc="description ss"/>
                 <ParamsTrNew />
             </tbody>
         );
