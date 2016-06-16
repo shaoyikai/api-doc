@@ -1,41 +1,8 @@
-/**
- * Created by yikai on 2016-6-12.
- * react jsx file
- */
-
-
-/*
-<tr>
-    <td><input type="text" id="par_name"></td>
-    <td>
-        <select id="par_type">
-            <option value="0" selected>string</option>
-            <option value="1">int</option>
-        </select>
-    </td>
-    <td>
-        <select id="par_must">
-            <option value="0" selected>否</option>
-            <option value="1">是</option>
-        </select>
-    </td>
-    <td><input type="text" id="par_desc"></td>
-
-    <td>
-        <?php if($model->isNewRecord):?>
-        <a href="javascript:void(0)" onclick="addParams()" class="btn btn-success">+</a>
-        <?php else:?>
-        <a href="javascript:void(0)" onclick="addParamsOne()" class="btn btn-success">+</a>
-        <?php endif;?>
-    </td>
-
-</tr>
-*/
 var Input = React.createClass({
     render: function() {
 
         return (
-            <input type={this.props.type} id={this.props.id} placeholder={this.props.desc}/>
+            <input type={this.props.type} id={this.props.id} placeholder={this.props.placeholder}/>
         );
     }
 });
@@ -49,7 +16,6 @@ var Select1 = React.createClass({
         );
     }
 });
-
 var Select2 = React.createClass({
     render: function() {
         return (
@@ -68,9 +34,10 @@ var Link = React.createClass({
     }
 });
 
-//-------------------------------------------
-
 var ParamsTr = React.createClass({
+    removeParams:function(){
+        console.log(this);
+    },
     render: function() {
         return (
             <tr>
@@ -90,10 +57,10 @@ var ParamsTrNew = React.createClass({
     render: function() {
         return (
             <tr>
-                <td><Input type="text" id="par_id" desc="请输入名称"/></td>
+                <td><Input type="text" id="par_id" placeholder="请输入名称"/></td>
                 <td><Select1 /></td>
                 <td><Select2 /></td>
-                <td><Input type="text" id="" desc="请输入描述"/></td>
+                <td><Input type="text" id="par_desc" placeholder="请输入描述"/></td>
                 <td><Link /></td>
             </tr>
         );
@@ -110,7 +77,7 @@ var ParamsTable = React.createClass({
                     <th>说明</th>
                     <th>操作</th>
                 </tr>
-                <ParamsTr parm_name="nameee" parm_type="ddfd" parm_must="1" parm_desc="description ss"/>
+                <ParamsTr parm_name="nameee" parm_type="ddfd" parm_must="1" parm_desc="descriptionddf"/>
                 <ParamsTrNew />
             </tbody>
         );
@@ -119,5 +86,3 @@ var ParamsTable = React.createClass({
 
 var box = document.getElementById('params-box');
 ReactDOM.render(<ParamsTable />,box);
-
-
