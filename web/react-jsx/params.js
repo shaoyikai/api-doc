@@ -1,9 +1,9 @@
 
-
 var ParamsTr = React.createClass({
 
-    removeParams:function(event){
-        alert('remove self');
+    removeSelf:function(){
+        ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(this));
+        $(ReactDOM.findDOMNode(this)).remove();
     },
     render: function() {
         var data = this.props.data;
@@ -15,7 +15,7 @@ var ParamsTr = React.createClass({
                 <td>{data.parm_must}</td>
                 <td>{data.parm_desc}</td>
                 <td>
-                    <a href="javascript:void(0)" onClick={this.removeParams} className="btn btn-warning">-</a>
+                    <a href="javascript:void(0)" onClick={this.removeSelf} className="btn btn-warning">-</a>
                 </td>
             </tr>
         );
@@ -25,19 +25,23 @@ var ParamsTr = React.createClass({
 var ParamsTrNew = React.createClass({
     getInitialState:function(){
         return {
-            value1:'hello!',
-            value2:'hello!'
+            value1:'',
+            value2:''
         };
     },
-    handleChange:function(event){
+    handleChange1:function(event){
         this.setState({
-            value1:event.target.value,
+            value1:event.target.value
+        });
+    },
+    handleChange2:function(event){
+        this.setState({
             value2:event.target.value
         });
     },
 
-    addParams:function(){
-        alert('heheheheh');
+    addNew:function(){
+        console.log();
     },
 
     render: function() {
@@ -49,7 +53,7 @@ var ParamsTrNew = React.createClass({
                         id="par_id"
                         placeholder="请输入名称"
                         value={this.state.value1}
-                        onChange={this.handleChange}
+                        onChange={this.handleChange1}
                     />
                 </td>
 
@@ -73,25 +77,30 @@ var ParamsTrNew = React.createClass({
                         id="par_desc"
                         placeholder="请输入描述"
                         value={this.state.value2}
-                        onChange={this.handleChange}
+                        onChange={this.handleChange2}
                     />
                 </td>
 
                 <td>
-                    <a href="javascript:void(0)" onClick={this.addParams} className="btn btn-success">+</a>
+                    <a href="javascript:void(0)" onClick={this.addNew} className="btn btn-success">+</a>
                 </td>
             </tr>
         );
     }
 });
 var ParamsTable = React.createClass({
+    getInitialState:function(){
+        return {};
+    },
+
     render: function() {
         var data = {
-            parm_name:"nameee",
-            parm_type:"string",
-            parm_must:"1",
-            parm_desc:"desssc"
+            parm_name: "nameee",
+            parm_type: "string",
+            parm_must: "1",
+            parm_desc: "desssc"
         };
+
         return (
             <table className="table table-bordered">
                 <tbody>
@@ -102,15 +111,17 @@ var ParamsTable = React.createClass({
                         <th>说明</th>
                         <th>操作</th>
                     </tr>
+
                     <ParamsTr data={data}/>
+
                     <ParamsTrNew />
+
                 </tbody>
             </table>
         );
     }
 });
 
-//渲染到页面上
 ReactDOM.render(
     <ParamsTable />,
     document.getElementById('params-box')

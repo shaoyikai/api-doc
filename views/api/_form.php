@@ -6,6 +6,8 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Api */
 /* @var $form yii\widgets\ActiveForm */
+
+$api_id = isset($model->api_id) ? $model->api_id : 0;
 ?>
 <script type="text/babel" src="react-jsx/params.js"></script>
 
@@ -150,7 +152,7 @@ use yii\widgets\ActiveForm;
     //update
     function addParamsOne()
     {
-        var api_id = <?=$model->api_id?>;
+        var api_id = <?=$api_id?>;
         var par_name = document.getElementById('par_name').value;
         var par_type = document.getElementById('par_type').value;
         var par_must = document.getElementById('par_must').value;
