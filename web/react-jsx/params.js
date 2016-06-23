@@ -1,28 +1,5 @@
 
-var ParamsTr = React.createClass({
-
-    removeSelf:function(){
-        ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(this));
-        $(ReactDOM.findDOMNode(this)).remove();
-    },
-    render: function() {
-        var data = this.props.data;
-
-        return (
-            <tr>
-                <td>{data.parm_name}</td>
-                <td>{data.parm_type}</td>
-                <td>{data.parm_must}</td>
-                <td>{data.parm_desc}</td>
-                <td>
-                    <a href="javascript:void(0)" onClick={this.removeSelf} className="btn btn-warning">-</a>
-                </td>
-            </tr>
-        );
-    }
-});
-
-var ParamsTrNew = React.createClass({
+var ParamsTable = React.createClass({
     getInitialState:function(){
         return {
             value1:'',
@@ -39,67 +16,38 @@ var ParamsTrNew = React.createClass({
             value2:event.target.value
         });
     },
+    addNewTr:function(){
 
-    addNew:function(){
-        console.log();
     },
-
     render: function() {
-        return (
-            <tr>
-                <td>
-                    <input
-                        type="text"
-                        id="par_id"
-                        placeholder="请输入名称"
-                        value={this.state.value1}
-                        onChange={this.handleChange1}
-                    />
-                </td>
+        var data = [
+            {
+                parm_name: "nameee",
+                parm_type: "string",
+                parm_must: "1",
+                parm_desc: "desssc"
+            },
+            {
+                parm_name: "namee22e",
+                parm_type: "string",
+                parm_must: "0",
+                parm_desc: "dess22sc"
+            }
+        ];
 
-                <td>
-                    <select id="par_type">
-                        <option value="0" selected>string</option>
-                        <option value="1">int</option>
-                    </select>
-                </td>
-
-                <td>
-                    <select id="par_must">
-                        <option value="0" selected>是</option>
-                        <option value="1">否</option>
-                    </select>
-                </td>
-
-                <td>
-                    <input
-                        type="text"
-                        id="par_desc"
-                        placeholder="请输入描述"
-                        value={this.state.value2}
-                        onChange={this.handleChange2}
-                    />
-                </td>
-
-                <td>
-                    <a href="javascript:void(0)" onClick={this.addNew} className="btn btn-success">+</a>
-                </td>
-            </tr>
-        );
-    }
-});
-var ParamsTable = React.createClass({
-    getInitialState:function(){
-        return {};
-    },
-
-    render: function() {
-        var data = {
-            parm_name: "nameee",
-            parm_type: "string",
-            parm_must: "1",
-            parm_desc: "desssc"
-        };
+        var ParamsTrs = data.map(function(comment,i) {
+            return (
+                <tr id={"tr-"+i}>
+                    <td>{comment.parm_name}</td>
+                    <td>{comment.parm_type}</td>
+                    <td>{comment.parm_must}</td>
+                    <td>{comment.parm_desc}</td>
+                    <td>
+                        <a href="javascript:void(0)" className="btn btn-warning">-</a>
+                    </td>
+                </tr>
+            );
+        });
 
         return (
             <table className="table table-bordered">
@@ -111,11 +59,30 @@ var ParamsTable = React.createClass({
                         <th>说明</th>
                         <th>操作</th>
                     </tr>
-
-                    <ParamsTr data={data}/>
-
-                    <ParamsTrNew />
-
+                    {ParamsTrs}
+                    <tr>
+                        <td>
+                            <input type="text" id="par_id" placeholder="请输入名称" value={this.state.value1} onChange={this.handleChange1}/>
+                        </td>
+                        <td>
+                            <select id="par_type">
+                                <option value="0" selected>string</option>
+                                <option value="1">int</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="par_must">
+                                <option value="0" selected>是</option>
+                                <option value="1">否</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" id="par_desc" placeholder="请输入描述" value={this.state.value2} onChange={this.handleChange2}/>
+                        </td>
+                        <td>
+                            <a href="javascript:void(0)" className="btn btn-success" onClick={this.addNewTr.bind(this)}>+</a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         );
