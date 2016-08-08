@@ -78,10 +78,9 @@ class ApiController extends Controller
             return $this->redirect(['index', 'pro_id' => $pro_id,'#'=>'mark_'.$model->api_id]);
         } else {
 
-            $params = ParamsTemp::find()->asArray()->all();
+//            $params = ParamsTemp::find()->asArray()->all();
             return $this->render('create', [
                 'model' => $model,
-                'params' => $params,
                 'pro_id' => $pro_id
             ]);
         }
