@@ -77,8 +77,6 @@ class ApiController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->saveData()) {
             return $this->redirect(['index', 'pro_id' => $pro_id,'#'=>'mark_'.$model->api_id]);
         } else {
-
-//            $params = ParamsTemp::find()->asArray()->all();
             return $this->render('create', [
                 'model' => $model,
                 'pro_id' => $pro_id
@@ -101,6 +99,8 @@ class ApiController extends Controller
         } else {
             $params = Params::find()->where(['api_id'=>$id])->asArray()->all();
 
+            //将 params 以cookie的方式发送给客户端 react 组件 todo
+            //js 如何读取cookie todo
             return $this->render('update', [
                 'model' => $model,
                 'params' => $params

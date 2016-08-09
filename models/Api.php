@@ -68,28 +68,27 @@ class Api extends \yii\db\ActiveRecord
 
     public function saveData()
     {
-        if(!$this->save())
-        {
+        $postArr = Yii::$app->getRequest()->post();
+        $params = !empty($postArr['Api']['params']) ? $postArr['Api']['params'] : [];
+ 
+        if(!$this->save()) {
             return false;
         }
-
         $api_id = static::getDb()->getLastInsertID();
-        $temp_model = ParamsTemp::find()->all();
-        if (!empty($temp_model)) {
-            foreach ($temp_model as $tmp) {
-                $params_model = new Params();
-                $params_model->api_id = $api_id;
-                $params_model->parm_name = $tmp->parm_name;
-                $params_model->parm_type = $tmp->parm_type;
-                $params_model->parm_must = $tmp->parm_must;
-                $params_model->parm_desc = $tmp->parm_desc;
-                if(!$params_model->save())
-                {
-                    return false;
-                }
+
+        foreach ($params as $tmp) {
+
+            $params_model = new Params();
+            $params_model->api_id = $api_id;
+            $params_model->parm_name = $tmp['parm_name'];
+            $params_model->parm_type = $tmp['parm_type'];
+            $params_model->parm_must = $tmp['parm_must'];
+            $params_model->parm_desc = $tmp['parm_desc'];
+
+            if(!$params_model->save()) {
+                return false;
             }
         }
-
         return true;
     }
 }
