@@ -2,7 +2,9 @@
 
 namespace app\models;
 
+use PhpParser\Builder\Param;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "api".
@@ -66,6 +68,7 @@ class Api extends \yii\db\ActiveRecord
         return $this->hasMany(Params::className(), ['api_id' => 'api_id']);
     }
 
+    // 插入数据
     public function saveData()
     {
         $postArr = Yii::$app->getRequest()->post();
@@ -90,5 +93,55 @@ class Api extends \yii\db\ActiveRecord
             }
         }
         return true;
+    }
+
+    // 更新数据
+    public function updateData()
+    {
+        $postArr = Yii::$app->getRequest()->post();
+        $params = !empty($postArr['Api']['params']) ? $postArr['Api']['params'] : [];
+
+        if(!$this->save()) {
+            return false;
+        }
+        $api_id = Yii::$app->getRequest()->get('id');
+        if(!$api_id){
+            return false;
+        }
+
+        $tempNames = [];
+        foreach ($params as $tmp) {
+            array_push($tempNames, $tmp['parm_name']);
+            // 新增的参数才需要入库！
+            if(!$this->isParamExist($tmp['parm_name'])){
+                $params_model = new Params();
+                $params_model->api_id = $api_id;
+                $params_model->parm_name = $tmp['parm_name'];
+                $params_model->parm_type = $tmp['parm_type'];
+                $params_model->parm_must = $tmp['parm_must'];
+                $params_model->parm_desc = $tmp['parm_desc'];
+
+                if(!$params_model->save()) {
+                    return false;
+                }
+            }
+        }
+
+        // 删除需要删除的参数
+        $notIn = Params::find()
+            ->where(['api_id'=>$api_id])
+            ->andWhere(['not in', 'parm_name', $tempNames])
+            ->all();
+        $deleteIds = ArrayHelper::getColumn($notIn, 'parm_id');
+        Params::deleteAll(['in','parm_id',$deleteIds]);
+
+        return true;
+    }
+
+    // 检查该参数是否已经存在
+    private function isParamExist($param_name)
+    {
+        $hasOne = Params::find()->where(['parm_name' => $param_name])->one();
+        return $hasOne ? true : false;
     }
 }
