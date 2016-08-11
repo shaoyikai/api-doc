@@ -19,7 +19,7 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "phpdocumentor/phpdocumentor": "2.*",
-        "cliff363825/yii2-kindeditor": "*"
+        "cliff363825/yii2-kindeditor": "v1.0.5"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

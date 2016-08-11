@@ -77,11 +77,8 @@ class ApiController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->saveData()) {
             return $this->redirect(['index', 'pro_id' => $pro_id,'#'=>'mark_'.$model->api_id]);
         } else {
-
-            $params = ParamsTemp::find()->asArray()->all();
             return $this->render('create', [
                 'model' => $model,
-                'params' => $params,
                 'pro_id' => $pro_id
             ]);
         }
@@ -97,14 +94,15 @@ class ApiController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->updateData()) {
             return $this->redirect(['index', 'pro_id' => $model->pro_id,'#'=>'mark_'.$model->api_id]);
         } else {
             $params = Params::find()->where(['api_id'=>$id])->asArray()->all();
+            setcookie('params', json_encode($params));
+            //将 params 以 cookie 的方式发送给客户端 react 组件
 
             return $this->render('update', [
-                'model' => $model,
-                'params' => $params
+                'model' => $model
             ]);
         }
     }
