@@ -10,7 +10,7 @@ AppAsset::register($this);
 
 
 $dropList = Projects::getDropList();
-
+$this->title = Yii::t('app','Api Doc Builder') . ' - ' . $this->title;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ $dropList = Projects::getDropList();
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::t('app','API Doc Builder'),
+        'brandLabel' => Yii::t('app','Api Doc Builder'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse',
@@ -38,7 +38,7 @@ $dropList = Projects::getDropList();
         'options' => ['class' => 'navbar-nav navbar-right','id' => 'top'],
         'items' => [
             ['label' => Yii::t('app', 'GitHub'), 'url' => 'http://www.github.com/shaoyikai/api-doc'],
-            ['label' => Yii::t('app', 'About Us'), 'url' => ['/site/about']],
+            //['label' => Yii::t('app', 'About Us'), 'url' => ['/site/about']],
             ['label' => Yii::t('app','Project'), 'url' => ['/projects/index']],
 
             count($dropList) ?
