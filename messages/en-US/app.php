@@ -3,7 +3,7 @@
 return [
     // layouts/main.php
     'Project' => 'Project',
-    'API Doc Builder' => 'API Doc Builder',
+    'Api Doc Builder' => 'Api Doc Builder',
     'Login' => 'Login',
     'Logout' => 'Logout',
 

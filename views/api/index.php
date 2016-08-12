@@ -23,9 +23,24 @@ $this->registerCss('
     #scrollTop{display:none;}
 ');
 
+$this->registerJs('
+
+    // 显示结果
+    function show_response(){
+        var responseAll = $(".show_response");
+   
+        for (var i=0; i< responseAll.length; i++){
+            var brother = $(responseAll[i]).prev();
+            $(responseAll[i]).html(marked(brother.html()))
+        }
+    }
+    show_response();
+
+');
 
 ?>
 <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+<script type="text/javascript" src="js/marked.js"></script>
 
 <div class="row">
 
@@ -85,7 +100,8 @@ $this->registerCss('
 
                 <div>
                     <label><?=Yii::t('app','Return Result')?></label>
-                    <?=$datas['api_response']?>
+                    <p style="display:none;"><?php echo $datas['api_response']?></p>
+                    <p class="show_response"></p>
                 </div>
 
             </div>
@@ -166,3 +182,4 @@ $this->registerCss('
     }
 
 </script>
+
