@@ -6,13 +6,13 @@ function getCookie(cookie_name) {
 
     if (cookie_pos != -1) {
         cookie_pos += cookie_name.length + 1;
-        var cookie_end = all_cookies.indexOf(";", cookie_pos)
-    }
+        var cookie_end = all_cookies.indexOf(";", cookie_pos);
 
-    if (cookie_end == -1) {
-        cookie_end = all_cookies.length;
+        if (cookie_end == -1) {
+            cookie_end = all_cookies.length;
+        }
+        return unescape(all_cookies.substring(cookie_pos, cookie_end));
     }
-    return unescape(all_cookies.substring(cookie_pos, cookie_end));
 }
 var params = eval(getCookie('params')); // 将得到的 string 转换为 object
 

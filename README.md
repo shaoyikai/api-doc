@@ -12,8 +12,7 @@ API 文档生成器
 可是，前后端配合的愉快吗？呵呵……
 
 既然前后端分离这么好，为什么很多开发人员，还是被沟通搞得焦头烂额呢？
-
-主要的原因是没有一个清晰的接口文档，更准确的说，是因为没有一个能够跟得上项目进度“及时更新的”“清晰的”接口文档！
+我觉得主要原因是没有一个清晰的接口文档，更准确的说，是没有一个能够跟得上项目进度“及时更新的”“清晰的”接口文档！
 
 本程序旨在方便快捷的编写api文档，同时提供一些有用的工具，让编写api文档成为一个轻松惬意的工作。
 
@@ -41,9 +40,10 @@ API 文档生成器
 
   - clone到本地，配置虚拟主机
   - 如果之前你的composer没有安装过`composer-asset-plugin`，需要执行composer global require "fxp/composer-asset-plugin:~1.1.1"进行安装
-  - 使用命令行，cd到项目根目录，执行 `composer install`
+  - 使用命令行，cd到项目根目录，执行 `composer install`。注意，首次执行此命令的可能需要添加github分配的token。token生成办法，登录github，按此顺序操作：settings -> Personal access tokens -> generate new token
   - 创建数据库api-doc，字符集选择utf-8，配置数据库`config/db.php`。
-  - 使用命令行，在根目录执行`php yii migrate` ，选择yes，选择all。（请自行将php添加到系统环境变量）
+  - 使用命令行，在根目录执行`php yii migrate` ，选择yes。（需将php添加到系统环境变量）
+  - 配置虚拟主机（如：http://demo.api-doc.com）到 web 目录下面。
 
 
 必要条件
@@ -54,7 +54,6 @@ API 文档生成器
 
 配置数据库
 -------------
-
 编辑文件 `config/db.php`：
 
 ```php
@@ -62,9 +61,27 @@ return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=api-doc',
     'username' => 'root',
-    'password' => '1234',
+    'password' => '1234', // 根据自己的环境填写
     'charset' => 'utf8',
 ];
+```
+
+Apache虚拟主机配置参考
+-------------
+
+```php
+<VirtualHost *:80>
+    ServerAdmin someone@example.com
+    DocumentRoot "C:/www/api-doc/web"
+    ServerName demo.api-doc.com
+    ErrorLog "logs/api-doc.com-error.log"
+    CustomLog "logs/api-doc.com-access.log" common
+
+	<Directory "C:/www/api-doc/web">
+		AllowOverride all
+		Require all granted
+	</Directory>
+</VirtualHost>
 ```
 
 **注意：** 数据库需要手动创建
