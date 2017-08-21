@@ -105,42 +105,49 @@ var ParamsTable = React.createClass({
         });
 
         return (
-            <table className="table table-bordered">
-                <tbody>
-                <tr>
-                    <th>参数</th>
-                    <th>类型</th>
-                    <th>是否可选</th>
-                    <th>说明</th>
-                    <th>操作</th>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="text" onChange={this.handleChange1} value={this.state.value1} placeholder="请输入名称"/>
-                    </td>
-                    <td>
-                        <select onChange={this.handleSelect1} value={this.state.value2}>
-                            <option value="0" selected>string</option>
-                            <option value="1">int</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select onChange={this.handleSelect2} value={this.state.value3}>
-                            <option value="0" selected>是</option>
-                            <option value="1">否</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="text" onChange={this.handleChange2} value={this.state.value4} placeholder="请输入描述"/>
-                    </td>
-                    <td>
-                        <a href="javascript:void(0)" className="btn btn-success"
-                           onClick={this.addNewTr.bind(this)}>+</a>
-                    </td>
-                </tr>
-                {ParamsTrs }
-                </tbody>
-            </table>
+            <div className="form-group">
+                <div className="col-xs-3 col-sm-2 text-right">
+                    <label className="control-label">参数</label>
+                </div>
+                <div className="col-xs-9 col-sm-9">
+                    <table className="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>参数</th>
+                                <th>类型</th>
+                                <th>是否可选</th>
+                                <th>说明</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" onChange={this.handleChange1} value={this.state.value1} placeholder="请输入名称"/>
+                                </td>
+                                <td>
+                                    <select onChange={this.handleSelect1} value={this.state.value2}>
+                                        <option value="0" selected>string</option>
+                                        <option value="1">int</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select onChange={this.handleSelect2} value={this.state.value3}>
+                                        <option value="0" selected>是</option>
+                                        <option value="1">否</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" onChange={this.handleChange2} value={this.state.value4} placeholder="请输入描述"/>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" className="btn btn-success"
+                                       onClick={this.addNewTr.bind(this)}>+</a>
+                                </td>
+                            </tr>
+                            {ParamsTrs}
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
         );
     }
 });

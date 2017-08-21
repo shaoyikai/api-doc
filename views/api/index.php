@@ -111,8 +111,8 @@ $this->registerJs('
     </div>
 
     <div class="col-md-3" role="complementary">
-        <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" id="affix-top" onclick="affixTop(this)">
-            <h3><?=Yii::t('app','Api Index')?></h3>
+        <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" style="padding-left:10px;" id="affix-top" onclick="affixTop(this)">
+            <?=\yii\bootstrap\Html::a('导出文档',['site/main'],['class' => 'btn btn-sm btn-primary']);?>
 
             <ul class="nav">
                 <?php foreach ($dataProvider->getModels() as $values) :?>
@@ -121,11 +121,11 @@ $this->registerJs('
             </ul>
 
 
-            <a href="#top" id="scrollTop">
+            <!--<a href="#top" id="scrollTop">
                 <button type="button" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon glyphicon-triangle-top" aria-hidden="true"></span> TOP
                 </button>
-            </a>
+            </a>-->
 
         </nav>
     </div>

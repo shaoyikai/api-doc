@@ -58,7 +58,7 @@ $this->title = Yii::t('app','Api Doc Builder') . ' - ' . $this->title;
     NavBar::end();
     ?>
 
-    <div class="container" style="margin-top: -50px;margin-bottom:800px;">
+    <div class="container" style="margin-top: -50px;">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

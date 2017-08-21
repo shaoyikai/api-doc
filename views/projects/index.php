@@ -31,26 +31,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
+                'header' => '操作',
                 'buttons' => [
 
                     'apis' => function ($url, $model) {
                         $url = '/index.php?r=api/index&pro_id=' . $model->pro_id;
-                        return Html::a('<span class="glyphicon glyphicon-eye-open">' . Yii::t('app', 'Api List') . '</span>', $url);
+                        return Html::a(Yii::t('app', 'Api List'), $url);
                     },
                     'update' => function ($url) {
-                        return Html::a('<span class="glyphicon glyphicon-pencil">' . Yii::t('app', 'Update') . '</span>', $url);
+                        return Html::a(Yii::t('app', 'Update'), $url);
                     },
                     'delete' => function ($url, $model) {
 
                         $url = '/index.php?r=projects/delete&id=' . $model->pro_id;
-                        return Html::a('<span class="glyphicon glyphicon-trash">' . Yii::t('app', 'Delete') . '</span>', $url, [
+                        return Html::a(Yii::t('app', 'Delete'), $url, [
                             'data-confirm' => '确认要删除吗？',
                         ]);
 
                     },
 
                 ],
-                'template' => '{apis} {update} {delete}',
+                'template' => '{apis} | {update} | {delete}',
             ],
         ],
     ]); ?>
