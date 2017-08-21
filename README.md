@@ -22,17 +22,17 @@ API 文档生成器
 
 项目采用PHP的框架yii framework，目录结构如下：
 
-      assets/             contains assets definition
-      commands/           contains console commands (controllers)
-      config/             contains application configurations
-      controllers/        contains Web controller classes
-      mail/               contains view files for e-mails
-      models/             contains model classes
-      runtime/            contains files generated during runtime
-      tests/              contains various tests for the basic application
-      vendor/             contains dependent 3rd-party packages
-      views/              contains view files for the Web application
-      web/                contains the entry script and Web resources
+      assets/
+      commands/
+      config/
+      controllers/
+      mail/
+      models/
+      runtime/
+      tests/
+      vendor/
+      views/
+      web/
 
 
 安装说明

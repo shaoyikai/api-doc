@@ -6,13 +6,11 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Projects */
 
-$this->title = $model->pro_id;
+$this->title = $model->pro_name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app','Projects'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="projects-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a(Yii::t('app','Update'), ['update', 'id' => $model->pro_id], ['class' => 'btn btn-primary']) ?>
@@ -28,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'pro_id',
             'pro_name',
             'pro_code',
         ],

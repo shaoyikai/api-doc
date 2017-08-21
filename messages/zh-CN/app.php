@@ -64,7 +64,6 @@ return [
     'Are you sure you want to delete this item?' => '您确定要删除吗？',
 
     // API
-    'Api Index' => '接口索引',
     'Create Api' => '创建接口',
     'Api Url' => '接口地址',
     'Api Usage' => '使用方法',
