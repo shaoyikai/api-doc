@@ -31,7 +31,13 @@ $this->registerJs('
    
         for (var i=0; i< responseAll.length; i++){
             var brother = $(responseAll[i]).prev();
-            $(responseAll[i]).html(marked(brother.html()))
+
+            var resHtml = brother.html();
+            if(isJSON(resHtml)){
+                resHtml = formatJson(resHtml);
+            }
+            var html = "```javascript" + resHtml + "```";
+            $(responseAll[i]).html(marked(html))
         }
     }
     show_response();
@@ -41,6 +47,7 @@ $this->registerJs('
 ?>
 <link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/marked.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 
 <div class="row">
 
@@ -53,7 +60,7 @@ $this->registerJs('
         </p>
 
         <a name="preview"></a>
-        <?php foreach ($dataProvider->getModels() as $datas) :?>
+        <?php foreach ($dataProvider->getModels() as $key => $datas) :?>
             <div class="list">
                 <div>
                     <a class="mark_top" name="mark_<?=$datas['api_id']?>"></a>
@@ -105,7 +112,12 @@ $this->registerJs('
                 </div>
 
             </div>
-            <p class="seperator"></p>
+            <?php
+            // 如果是最后一条数据，不显示分割线
+            if($key != (count($dataProvider->getModels()) - 1)){
+                echo '<p class="seperator"></p>';
+            }
+            ?>
         <?php endforeach; ?>
 
     </div>
@@ -121,11 +133,11 @@ $this->registerJs('
             </ul>
 
 
-            <!--<a href="#top" id="scrollTop">
+            <a href="#top" id="scrollTop">
                 <button type="button" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon glyphicon-triangle-top" aria-hidden="true"></span> TOP
                 </button>
-            </a>-->
+            </a>
 
         </nav>
     </div>
