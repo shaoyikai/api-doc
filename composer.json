@@ -8,14 +8,10 @@
         }
     ],
 
-    "keywords": ["yii2", "api doc", "", "project template"],
+    "keywords": ["api doc", "project template"],
     "homepage": "https://github.com/shaoyikai/api-doc",
     "type": "project",
     "license": "BSD-3-Clause",
-    "support": {
-        "issues": "https://github.com/shaoyikai/api-doc/issues",
-        "source": "https://github.com/shaoyikai/api-doc"
-    },
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
