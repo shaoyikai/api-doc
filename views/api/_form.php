@@ -9,8 +9,9 @@ use yii\widgets\ActiveForm;
 
 $api_id = isset($model->api_id) ? $model->api_id : 0;
 ?>
-<script type="text/babel" src="react-jsx/params.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/marked.js"></script>
+<script type="text/babel" src="react-jsx/params.js"></script>
 
 <div class="api-form">
 
@@ -59,13 +60,17 @@ $api_id = isset($model->api_id) ? $model->api_id : 0;
 </div>
 
 <script>
+
     //实时显示markdown内容
     function show_content(){
         var inputBox = document.getElementById('api-api_response');
         var showBox = document.getElementById('api-api_response2');
 
-        var newStr = '```javascript\n' + inputBox.value + '```';
+        var value = isJSON(inputBox.value) ? formatJson(inputBox.value) : inputBox.value;
+        var newStr = '```javascript' + value + '```';
         showBox.innerHTML = marked(newStr);
     }
     show_content();
+
+
 </script>
