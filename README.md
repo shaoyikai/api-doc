@@ -9,7 +9,7 @@ API 文档生成器
 后端呢，也只需要专注与应用的处理逻辑编写，数据库的设计等，最终把输入和输出封装成一个个清晰的API共前端人员调用。
 还有一个好处是，前后端需求有变更的时候，各自不会互相影响，非常有利于后期的维护。
 
-可是，前后端配合的愉快吗？呵呵……
+可是，前后端配合的愉快吗？……
 
 既然前后端分离这么好，为什么很多开发人员，还是被沟通搞得焦头烂额呢？
 我觉得主要原因是没有一个清晰的接口文档，更准确的说，是没有一个能够跟得上项目进度“及时更新的”“清晰的”接口文档！
@@ -20,7 +20,7 @@ API 文档生成器
 目录结构
 -------------------
 
-项目采用PHP的框架yii framework，目录结构如下：
+项目采用PHP框架yii2 framework，目录结构如下：
 
       assets/
       commands/
@@ -38,12 +38,11 @@ API 文档生成器
 安装说明
 -------------------
 
-  - clone到本地，配置虚拟主机
-  - 如果之前你的composer没有安装过`composer-asset-plugin`，需要执行composer global require "fxp/composer-asset-plugin:~1.1.1"进行安装
-  - 使用命令行，cd到项目根目录，执行 `composer install`。注意，首次执行此命令的可能需要添加github分配的token。token生成办法，登录github，按此顺序操作：settings -> Personal access tokens -> generate new token
-  - 创建数据库api-doc，字符集选择utf-8，配置数据库`config/db.php`。
-  - 使用命令行，在根目录执行`php yii migrate` ，选择yes。（需将php添加到系统环境变量）
-  - 配置虚拟主机（如：http://demo.api-doc.com）到 web 目录下面。
+  - 如果尚未安装composer插件`composer-asset-plugin`，您需要执行`composer global require "fxp/composer-asset-plugin:~1.1.1"`进行安装
+  - 执行安装命令：`composer create-project shaoyikai/api-doc`
+  - 创建数据库api-doc，字符集选择utf-8，配置数据库config/db.php
+  - 在根目录执行命令：`php yii migrate` ，选择yes。（需将php添加到系统环境变量）
+  - 配置虚拟主机（如：http://demo.api-doc.com）到 /web/ 目录下面。
 
 
 必要条件
