@@ -11,13 +11,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerCss('
 
-    ol li{margin:0.2em 0;}
     div.list{width:600px;margin-bottom:3em;}
     div.list .mark_top{display:inline-block;height:20px;}
     .seperator{height:4px;background:#4cae4c;border-radius:4px;}
     #affix-top{
         border-left:1px solid #ddd;
-        padding-bottom:60px;
     }
     #affix-top .nav{margin-bottom:60px;}
     #scrollTop{display:none;}
@@ -53,11 +51,7 @@ $this->registerJs('
 
     <div class="col-md-9" role="main">
 
-        <h1><?= Html::encode($this->title) ?></h1>
         <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-        <p>
-            <?= Html::a(Yii::t('app','Create Api'), ['create','pro_id'=>$pro_id], ['class' => 'btn btn-success']) ?>
-        </p>
 
         <a name="preview"></a>
         <?php foreach ($dataProvider->getModels() as $key => $datas) :?>
@@ -124,7 +118,10 @@ $this->registerJs('
 
     <div class="col-md-3" role="complementary">
         <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" style="padding-left:10px;" id="affix-top" onclick="affixTop(this)">
-            <?=\yii\bootstrap\Html::a('导出文档',['site/main'],['class' => 'btn btn-sm btn-primary']);?>
+
+            <?= Html::a(Yii::t('app','Create Api'), ['create','pro_id'=>$pro_id], ['class' => 'btn btn-sm btn-success']) ?>
+            <?= Html::a('导出文档',['site/main'],['class' => 'btn btn-sm btn-primary']);?>
+
 
             <ul class="nav">
                 <?php foreach ($dataProvider->getModels() as $values) :?>
@@ -150,7 +147,7 @@ $this->registerJs('
     function affixTop(self) {
 
         self.style.position="fixed";
-        self.style.top="20px";
+        self.style.top="70px";
     }
 
     window.onscroll = function () {
