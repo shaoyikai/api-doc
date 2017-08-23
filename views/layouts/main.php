@@ -31,7 +31,7 @@ $this->title = Yii::t('app','Api Doc Builder') . ' - ' . $this->title;
         'brandLabel' => Yii::t('app','Api Doc Builder'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse',
+            'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     echo Nav::widget([
@@ -58,7 +58,7 @@ $this->title = Yii::t('app','Api Doc Builder') . ' - ' . $this->title;
     NavBar::end();
     ?>
 
-    <div class="container" style="margin-top: -50px;">
+    <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
