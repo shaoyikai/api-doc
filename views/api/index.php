@@ -34,7 +34,7 @@ $this->registerJs('
             if(isJSON(resHtml)){
                 resHtml = formatJson(resHtml);
             }
-            var html = "```javascript" + resHtml + "```";
+            var html = "```javascript" + resHtml + "\n```";
             $(responseAll[i]).html(marked(html))
         }
     }

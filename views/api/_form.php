@@ -67,7 +67,7 @@ $api_id = isset($model->api_id) ? $model->api_id : 0;
         var showBox = document.getElementById('api-api_response2');
 
         var value = isJSON(inputBox.value) ? formatJson(inputBox.value) : inputBox.value;
-        var newStr = '```javascript' + value + '```';
+        var newStr = '```javascript' + value + '\n```';
         showBox.innerHTML = marked(newStr);
     }
     show_content();

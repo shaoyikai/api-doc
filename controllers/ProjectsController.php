@@ -76,8 +76,11 @@ class ProjectsController extends Controller
         $model = new Projects();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            // 清除缓存
+            Yii::$app->getCache()->set('dropList', false);
             return $this->redirect(['view', 'id' => $model->pro_id]);
-        } else {
+        }
+        else {
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -96,7 +99,8 @@ class ProjectsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->pro_id]);
-        } else {
+        }
+        else {
             return $this->render('update', [
                 'model' => $model,
             ]);
@@ -127,7 +131,8 @@ class ProjectsController extends Controller
     {
         if (($model = Projects::findOne($id)) !== null) {
             return $model;
-        } else {
+        }
+        else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
