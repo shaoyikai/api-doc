@@ -1,6 +1,10 @@
 API 文档生成器
 ============================
 
+[![Latest Stable Version](https://poser.pugx.org/shaoyikai/api-doc/v/stable.png)](https://packagist.org/packages/shaoyikai/api-doc)
+[![Total Downloads](https://poser.pugx.org/shaoyikai/api-doc/downloads.png)](https://packagist.org/packages/shaoyikai/api-doc)
+[![License](https://poser.pugx.org/shaoyikai/api-doc/license.png)](https://packagist.org/packages/shaoyikai/api-doc)
+
 
 随着现代应用越来越复杂，前后分离也变得越来越流行。
 
