@@ -120,7 +120,7 @@ $this->registerJs('
         <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" style="padding-left:10px;" id="affix-top" onclick="affixTop(this)">
 
             <?= Html::a(Yii::t('app','Create Api'), ['create','pro_id'=>$pro_id], ['class' => 'btn btn-sm btn-success']) ?>
-            <?= Html::a('导出文档',['site/main'],['class' => 'btn btn-sm btn-primary']);?>
+            <?= Html::a('导出文档',['export', 'pro_id'=>$pro_id],['class' => 'btn btn-sm btn-primary']);?>
 
 
             <ul class="nav">
