@@ -117,11 +117,11 @@ $this->registerJs('
     </div>
 
     <div class="col-md-3" role="complementary">
-        <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" style="padding-left:10px;" id="affix-top" onclick="affixTop(this)">
 
-            <?= Html::a(Yii::t('app','Create Api'), ['create','pro_id'=>$pro_id], ['class' => 'btn btn-sm btn-success']) ?>
-            <?= Html::a('导出文档',['export', 'pro_id'=>$pro_id],['class' => 'btn btn-sm btn-primary']);?>
+        <?= Html::a(Yii::t('app','Create Api'), ['create','pro_id'=>$pro_id], ['class' => 'btn btn-sm btn-success']) ?>
+        <?= Html::a('导出文档',['export', 'pro_id'=>$pro_id],['class' => 'btn btn-sm btn-primary']);?>
 
+        <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" id="affix-top" onclick="affixTop(this)" style="margin-top:10px;">
 
             <ul class="nav">
                 <?php foreach ($dataProvider->getModels() as $values) :?>
@@ -130,7 +130,7 @@ $this->registerJs('
             </ul>
 
 
-            <a href="#top" id="scrollTop">
+            <a href="#top" id="scrollTop" style="margin-left:14px;">
                 <button type="button" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon glyphicon-triangle-top" aria-hidden="true"></span> TOP
                 </button>
