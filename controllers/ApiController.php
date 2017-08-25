@@ -160,9 +160,11 @@ class ApiController extends Controller
             $section->addTextBreak(2);
         }
 
-
-
-        $filename = './docs/' . $project->pro_code . '.docx';
+        $docDir = './docs/';
+        if(!is_dir($docDir)){
+            mkdir($docDir, 0777);
+        }
+        $filename = $docDir . $project->pro_code . '.docx';
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($PHPWord, 'Word2007');
         $objWriter->save($filename);
 
