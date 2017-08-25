@@ -3,12 +3,11 @@
 namespace app\controllers;
 
 use app\models\Params;
-use app\models\ParamsTemp;
+use app\models\Projects;
 use PhpOffice\PhpWord\PhpWord;
 use Yii;
 use app\models\Api;
 use app\models\search\ApiSearch;
-use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -100,56 +99,70 @@ class ApiController extends Controller
         $searchModel = new ApiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $data = ArrayHelper::toArray($dataProvider->getModels());
+        // 接口列表数据
+        $data = $dataProvider->getModels();
 
-        /*-----------------------------------------------------------*/
         $PHPWord = new PhpWord();
-        $PHPWord->setDefaultFontSize(14);
+        $PHPWord->setDefaultFontSize(13);
+        $PHPWord->addTitleStyle( 2, array('color'=>'00CCFF', 'size'=>20, 'bold'=>true));
+
         $section = $PHPWord->addSection();
+        $project = Projects::findOne(['pro_id' => $pro_id]);
+        $section->addTitle($project->pro_name . 'API文档', 2);
+        $section->addTextBreak(2);
 
         $fontStyle = new \PhpOffice\PhpWord\Style\Font();
         $fontStyle->setBold(true);
         $fontStyle->setName('Tahoma');
-        $fontStyle->setSize(16);
+        $fontStyle->setSize(15);
         $fontStyle->setColor('006699');
-        $myTextElement = $section->addText('1. 登录');
-        $myTextElement->setFontStyle($fontStyle);
 
-        $section->addText('接口地址：[ user/login ]');
-        $section->addText('使用方法：[ post ]');
+        foreach ($data as $key => $value) {
+            $myTextElement = $section->addText(($key + 1) . '. ' . $value['api_title']);
+            $myTextElement->setFontStyle($fontStyle);
 
-        $cellStyle = array('textDirection' => 0, 'bgColor' => '00CCFF');
-        $tableStyle = array(
-            'cellMarginTop' => 80,
-            'cellMarginLeft' => 80,
-            'cellMarginRight' => 80,
-            'cellMarginBottom' => 80
-        );
-        $table = $section->addTable($tableStyle);
-        $table->addRow(500);
-        $table->addCell(2000, $cellStyle)->addText('参数');
-        $table->addCell(2000, $cellStyle)->addText('类型');
-        $table->addCell(2000, $cellStyle)->addText('是否可选');
-        $table->addCell(2000, $cellStyle)->addText('说明');
+            $howToUse = $value['api_type'] == 1 ? 'POST' : 'GET';
+            $section->addText('接口描述：' . $value['api_desc']);
+            $section->addText('接口地址：' . $value['api_title']);
+            $section->addText('使用方法：' . $howToUse);
 
-        $table->addRow();
-        $table->addCell(2000)->addText('username');
-        $table->addCell(2000)->addText('string');
-        $table->addCell(2000)->addText('否');
-        $table->addCell(2000)->addText('用户名称');
+            $cellStyle = array('textDirection' => 0, 'bgColor' => '00CCFF');
+            $cellStyleReturn = array('gridSpan' => 4, 'textDirection' => 0, 'bgColor' => '00CCFF');
+
+            $tableStyle = array(
+                'cellMarginTop' => 80,
+                'cellMarginLeft' => 80,
+                'cellMarginRight' => 80,
+                'cellMarginBottom' => 80
+            );
+            $table = $section->addTable($tableStyle);
+            if (!empty($value['params'])) {
+                $table->addRow(400);
+                $table->addCell(2000, $cellStyle)->addText('参数');
+                $table->addCell(2000, $cellStyle)->addText('类型');
+                $table->addCell(2000, $cellStyle)->addText('是否可选');
+                $table->addCell(2000, $cellStyle)->addText('说明');
+            }
+
+            foreach ($value['params'] as $k => $v) {
+                $table->addRow();
+                $table->addCell(2000)->addText($v['parm_name']);
+                $table->addCell(2000)->addText($v['parm_type']);
+                $table->addCell(2000)->addText($v['parm_must']);
+                $table->addCell(2000)->addText($v['parm_desc']);
+            }
+
+            $table->addRow(400);
+            $table->addCell(8000, $cellStyleReturn)->addText('返回结果');
+            $table->addRow();
+            $table->addCell(8000, array('gridSpan' => 4))->addText($value['api_response']);
+
+            $section->addTextBreak(2);
+        }
 
 
-        $table2 = $section->addTable($tableStyle);
-        $table2->addRow(500);
-        $table2->addCell(8000, $cellStyle)->addText('返回结果');
 
-        $table2->addRow();
-        $table2->addCell(8000)->addText('{"status":"ok"}');
-
-
-        /*-----------------------------------------------------------*/
-
-        $filename = './docs/helloWorld.docx';
+        $filename = './docs/' . $project->pro_code . '.docx';
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($PHPWord, 'Word2007');
         $objWriter->save($filename);
 
