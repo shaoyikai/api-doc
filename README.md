@@ -28,7 +28,7 @@ so，本程序旨在方便快捷的编写api文档，同时提供一些有用的
 ![项目列表](./web/images/projectlist.png "项目列表")
 ![接口列表](./web/images/apilist.png "接口列表")
 ![新建接口](./web/images/apicreate.png "新建接口")
-![导出接口](./web/images/apiword.png "导出为word文档")
+
 
 目录结构
 -------------------
