@@ -39,7 +39,7 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
 
-        // ¶àÓïÑÔÖ§³Ö
+        // å¤šè¯­è¨€æ”¯æŒ
         'i18n' => [
             'translations' => [
                 'app*' => [
